@@ -1,0 +1,890 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "RAFT"
+  },
+  "host": "raftsride.com/api",
+  "basePath": "",
+  "schemes": ["https", "http"],
+  "paths": {
+    "/login": {
+      "post": {
+        "tags": ["User Authentication"],
+        "summary": "Mobile Number Adding",
+        "description": "",
+        "operationId": "addMobile",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "mobile",
+            "in": "formData",
+            "description": "",
+            "default": "",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "user_type",
+            "in": "formData",
+            "description": "",
+            "default": "",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "device_id",
+            "in": "formData",
+            "description": "",
+            "default": "",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "fcm_token",
+            "in": "formData",
+            "description": "",
+            "default": "",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Top Navigation Details"
+          },
+          "400": {
+            "description": "Some problems occurred, please try again"
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+
+    "/login/token": {
+      "post": {
+        "tags": ["User Authentication"],
+        "summary": "OTP",
+        "description": "",
+        "operationId": "addOTP",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "mobile",
+            "in": "formData",
+            "description": "",
+            "default": "",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "otp",
+            "in": "formData",
+            "description": "",
+            "default": "",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "user_id",
+            "in": "formData",
+            "description": "",
+            "default": "",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Top Navigation Details"
+          },
+          "400": {
+            "description": "Some problems occurred, please try again"
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/logout/logout": {
+      "post": {
+        "tags": ["User Authentication"],
+        "summary": "User Logout",
+        "description": "",
+        "operationId": "logout",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Top Navigation Details"
+          },
+          "400": {
+            "description": "Some problems occurred, please try again"
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/users/updateuser": {
+      "post": {
+        "tags": ["Public User"],
+        "summary": "Update User",
+        "description": "",
+        "operationId": "updateuser",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "formData",
+            "description": "",
+            "default": "",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "name",
+            "in": "formData",
+            "description": "",
+            "default": "",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "email",
+            "in": "formData",
+            "description": "",
+            "default": "",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "default": "RAFT",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Top Navigation Details"
+          },
+          "400": {
+            "description": "Some problems occurred, please try again"
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/users/usercheck": {
+      "post": {
+        "tags": ["Public User"],
+        "summary": "Check User",
+        "description": "",
+        "operationId": "usercheck",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "formData",
+            "description": "",
+            "default": "",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "default": "RAFT",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Top Navigation Details"
+          },
+          "400": {
+            "description": "Some problems occurred, please try again"
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+
+    "/drivers/driver_details": {
+      "post": {
+        "tags": ["Driver Information"],
+        "summary": "Check Document Status",
+        "description": "",
+        "operationId": "driverdetails",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "formData",
+            "description": "",
+            "default": "",
+            "required": true,
+            "type": "string"
+          },
+
+          {
+            "name": "Authorization",
+            "in": "header",
+            "default": "RAFT",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Top Navigation Details"
+          },
+          "400": {
+            "description": "Some problems occurred, please try again"
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/maps/kmprice": {
+      "post": {
+        "tags": ["Public User"],
+        "summary": "Check Document Status",
+        "description": "",
+        "operationId": "documentstatus",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "formData",
+            "description": "",
+            "default": "",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "km",
+            "in": "formData",
+            "description": "",
+            "default": "",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "default": "RAFT",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Top Navigation Details"
+          },
+          "400": {
+            "description": "Some problems occurred, please try again"
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/drivers/updateuser": {
+      "post": {
+        "tags": ["Driver Information"],
+        "summary": "Update Driver",
+        "description": "",
+        "operationId": "updatedriver",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "formData",
+            "description": "",
+            "default": "",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "name",
+            "in": "formData",
+            "description": "",
+            "default": "",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "email",
+            "in": "formData",
+            "description": "",
+            "default": "",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "owner_number",
+            "in": "formData",
+            "description": "",
+            "default": "",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "driver_number",
+            "in": "formData",
+            "description": "",
+            "default": "",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "city",
+            "in": "formData",
+            "description": "",
+            "default": "",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "vehicle_type",
+            "in": "formData",
+            "description": "",
+            "default": "",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "driving_licence_number",
+            "in": "formData",
+            "description": "",
+            "default": "",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "default": "RAFT",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Top Navigation Details"
+          },
+          "400": {
+            "description": "Some problems occurred, please try again"
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/drivers/aadhar": {
+      "post": {
+        "tags": ["Driver Information"],
+        "summary": "Update Aadhar Docs",
+        "description": "",
+        "operationId": "updateaadhar",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "formData",
+            "description": "",
+            "default": "",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "aadharfront",
+            "in": "formData",
+            "description": "",
+            "default": "",
+            "required": true,
+            "type": "file"
+          },
+          {
+            "name": "aadharback",
+            "in": "formData",
+            "description": "",
+            "default": "",
+            "required": true,
+            "type": "file"
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "default": "RAFT",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Top Navigation Details"
+          },
+          "400": {
+            "description": "Some problems occurred, please try again"
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/drivers/rc": {
+      "post": {
+        "tags": ["Driver Information"],
+        "summary": "Update RC Docs",
+        "description": "",
+        "operationId": "updaterc",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "formData",
+            "description": "",
+            "default": "",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "rcfront",
+            "in": "formData",
+            "description": "",
+            "default": "",
+            "required": true,
+            "type": "file"
+          },
+          {
+            "name": "rcback",
+            "in": "formData",
+            "description": "",
+            "default": "",
+            "required": true,
+            "type": "file"
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "default": "RAFT",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Top Navigation Details"
+          },
+          "400": {
+            "description": "Some problems occurred, please try again"
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/drivers/drivinglicence": {
+      "post": {
+        "tags": ["Driver Information"],
+        "summary": "Update Driving Licence Docs",
+        "description": "",
+        "operationId": "drivinglicence",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "formData",
+            "description": "",
+            "default": "",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "drivinglicencefront",
+            "in": "formData",
+            "description": "",
+            "default": "",
+            "required": true,
+            "type": "file"
+          },
+          {
+            "name": "drivinglicenceback",
+            "in": "formData",
+            "description": "",
+            "default": "",
+            "required": true,
+            "type": "file"
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "default": "RAFT",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Top Navigation Details"
+          },
+          "400": {
+            "description": "Some problems occurred, please try again"
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/drivers/profilepic": {
+      "post": {
+        "tags": ["Driver Information"],
+        "summary": "Update profile pic",
+        "description": "",
+        "operationId": "profilepic",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "formData",
+            "description": "",
+            "default": "",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "driver_profile_pic",
+            "in": "formData",
+            "description": "",
+            "default": "",
+            "required": true,
+            "type": "file"
+          },
+
+          {
+            "name": "Authorization",
+            "in": "header",
+            "default": "RAFT",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Top Navigation Details"
+          },
+          "400": {
+            "description": "Some problems occurred, please try again"
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+
+    "/drivers/checkdocument": {
+      "post": {
+        "tags": ["Driver Information"],
+        "summary": "Check Document Status",
+        "description": "",
+        "operationId": "documentstatus",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "formData",
+            "description": "",
+            "default": "",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "default": "RAFT",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Top Navigation Details"
+          },
+          "400": {
+            "description": "Some problems occurred, please try again"
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/drivers/findlocation": {
+      "post": {
+        "tags": ["Driver Information"],
+        "summary": "Find Location",
+        "description": "",
+        "operationId": "findlocation",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "formData",
+            "description": "",
+            "default": "",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "langitude",
+            "in": "formData",
+            "description": "",
+            "default": "",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "latitude",
+            "in": "formData",
+            "description": "",
+            "default": "",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "default": "RAFT",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Top Navigation Details"
+          },
+          "400": {
+            "description": "Some problems occurred, please try again"
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/drivers/getdrivers": {
+      "post": {
+        "tags": ["Driver Information"],
+        "summary": "Get Drivers",
+        "description": "",
+        "operationId": "getdrivers",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "formData",
+            "description": "",
+            "default": "",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "langitude",
+            "in": "formData",
+            "description": "",
+            "default": "",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "latitude",
+            "in": "formData",
+            "description": "",
+            "default": "",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "default": "RAFT",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Top Navigation Details"
+          },
+          "400": {
+            "description": "Some problems occurred, please try again"
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/drivers/requestdrivers": {
+      "post": {
+        "tags": ["Driver Information"],
+        "summary": "Request Drivers",
+        "description": "",
+        "operationId": "requestdrivers",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "formData",
+            "description": "",
+            "default": "",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "langitude",
+            "in": "formData",
+            "description": "",
+            "default": "",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "latitude",
+            "in": "formData",
+            "description": "",
+            "default": "",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "vehicle_type",
+            "in": "formData",
+            "description": "",
+            "default": "",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "default": "RAFT",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Top Navigation Details"
+          },
+          "400": {
+            "description": "Some problems occurred, please try again"
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/cities/list": {
+      "get": {
+        "tags": ["System Settings"],
+        "summary": "Cities",
+        "description": "",
+        "operationId": "getcities",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Top Navigation Details"
+          },
+          "400": {
+            "description": "Some problems occurred, please try again"
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/vehicletypes/list": {
+      "get": {
+        "tags": ["System Settings"],
+        "summary": "Vehicle Types",
+        "description": "",
+        "operationId": "vehicletypes",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Top Navigation Details"
+          },
+          "400": {
+            "description": "Some problems occurred, please try again"
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/razorpaydetails/list": {
+      "get": {
+        "tags": ["System Settings"],
+        "summary": "Razor Pay Details",
+        "description": "",
+        "operationId": "razorpaydetails",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Top Navigation Details"
+          },
+          "400": {
+            "description": "Some problems occurred, please try again"
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    }
+  }
+}
