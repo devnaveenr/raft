@@ -2,7 +2,7 @@
 
 
 if (!function_exists('get_data')) {
-	function get_data($table = '', $where_data = [], $output)
+	function get_data($table = '', $where_data = [], $output='')
 	{
 		$CI    = &get_instance();
 		$CI->load->database();
