@@ -64,7 +64,7 @@
                 <a href="">
                   <i class="fa fa-map-marker" aria-hidden="true"></i>
                   <span>
-                    Ameerpet, Hyderabad, IN
+                    Ameerpet, Hyderabad
                   </span>
                 </a>
                 <a href="">
