@@ -1,3 +1,4 @@
+
 <?php
 /**
  * CodeIgniter
@@ -119,7 +120,7 @@ class CI_Driver_Library {
 		// Is there an extension?
 		$class_name = $prefix.$child_name;
 		$found = class_exists($class_name, FALSE);
-		if ( ! $found)
+		if ( ! $found) 
 		{
 			// Check for subclass file
 			foreach ($paths as $path)
