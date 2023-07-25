@@ -8,10 +8,10 @@ class Mainpage extends MX_Controller
         parent::__construct();
        
     }
-
+    
     public function index()
     {
-        //testing git now email checking hello ok
+        //testing git now email checking hello abc
         $data = array();
         // $data['css_links'] = 'includes/css_links';
         // $data['top_header'] = 'includes/top_header';
@@ -20,5 +20,5 @@ class Mainpage extends MX_Controller
         // $data['footer'] = 'includes/footer';
         $this->load->view('index', $data);
     }
-
+    
 }
