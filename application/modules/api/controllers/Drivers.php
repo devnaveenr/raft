@@ -12,6 +12,7 @@ class Drivers extends REST_Controller
 		$this->global_user_id = '';
 		$this->global_user_type = '';
         if (!isset($headers['Authorization'])) {
+            //ok testing
 			$response = array(
 				"status" => false,
 				"message" => 'Authorization failed',
