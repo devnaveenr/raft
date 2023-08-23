@@ -12,7 +12,6 @@ class Mainpage extends MX_Controller
     
     public function index()
     {
-        //hello
         $data = array();
         // $data['css_links'] = 'includes/css_links';
         // $data['top_header'] = 'includes/top_header';
