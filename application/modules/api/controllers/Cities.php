@@ -28,6 +28,7 @@ class Cities extends REST_Controller
 			$this->data['status'] = false;
 			$this->data['message'] = 'Data not found.';
 			$this->response($this->data, REST_Controller::HTTP_NOT_FOUND);
+			//test
 		}
     }
    
