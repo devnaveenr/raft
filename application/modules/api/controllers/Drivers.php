@@ -509,6 +509,17 @@ class Drivers extends REST_Controller
         $user_id= $this->post('user_id');
         $booking_id= $this->post('booking_id');
 
+        $params = array();
+		$params['select'] = "t1.*"; 
+		$params['table'] = 'users t1';
+		$where = "";
+		$where = "t1.user_id=".$user_id;
+		$params['where'] = $where;
+		$params['order_by'] = 't1.user_id';
+		$params['output'] = 'row_array';
+		$user_data = $this->CrudModel->getReports($params);
+        $token = $user_data['fcm_token'];
+
         $data = array(
             'driver_id' => 0,
             'status' => 'pending',
@@ -533,7 +544,13 @@ class Drivers extends REST_Controller
                 'body' => $message,
                 'sound' => 'mySound'
             ];
+            $extraNotificationData = ["message" => $notification];
             $not = push_notification_android($token,$notification,$extraNotificationData);
+            $message = [
+                'status' => true,
+                'message' => "Ride Rejected Successfully"
+            ];
+            $this->response($message, REST_Controller::HTTP_OK); 
         }
 
     }
