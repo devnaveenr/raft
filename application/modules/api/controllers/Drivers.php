@@ -507,6 +507,7 @@ class Drivers extends REST_Controller
         $order_id= $this->post('order_id');
         $driver_id= $this->post('driver_id');
         $user_id= $this->post('user_id');
+        $booking_id= $this->post('booking_id');
 
         $data = array(
             'driver_id' => 0,
