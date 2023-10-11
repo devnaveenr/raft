@@ -566,7 +566,7 @@ class Drivers extends REST_Controller
             'vehicle_type' => $vehicle_type,
             'status' => 'started',
             'driver_status' => 'started',
-            'modified_on' => date('Y-m-d H:i:s'),
+            'updated_on' => date('Y-m-d H:i:s'),
             'ride_start_time'=>date('Y-m-d H:i:s')
         );
         $where = 'id='.$order_id;
