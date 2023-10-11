@@ -554,6 +554,26 @@ class Drivers extends REST_Controller
         }
 
     }
+    public function pickup_ride_post(){
+        header("Access-Control-Allow-Origin: *");
+        $_POST = $this->security->xss_clean($_POST);
+        $order_id= $this->post('order_id');
+        $driver_id= $this->post('driver_id');
+        $vehicle_type= $this->post('vehicle_type');
+        $booking_id= $this->post('booking_id');
+        $data = array(
+            'driver_id' => $driver_id,
+            'vehicle_type' => $vehicle_type,
+            'status' => 'started',
+            'driver_status' => 'started',
+            'modified_on' => date('Y-m-d H:i:s'),
+            'ride_start_time'=>date('Y-m-d H:i:s')
+        );
+        $where = 'id='.$order_id;
+        $update_user = $this->CrudModel->updateItem('orders',$where,$data);
+
+    }
+
 }
 
 //17.497479, 78.390134 Sardar Patel Nagar1
