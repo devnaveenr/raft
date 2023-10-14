@@ -646,10 +646,20 @@ class Drivers extends REST_Controller
         if ($unique_id == false) {
             $response = array('status' => false, 'message' => 'Some Problem found while Completing the Ride!');
         } else {
-            $order_details = get_table_row('taxi_orders', array('id' => $booking_id));
+            $order_details = get_table_row('orders', array('booking_Id' => $booking_id));
             $message = "Your Booking with Booking ID: " . $booking_id . " has been completed successfully!";
-            $this->ws_model->send_push_notification($message, 'user', $user_id, 'complete_ride', $amount, $rider_id, $order_details['vehicle_id'], $order_details['ride_id'], $order_details['mode'], $order_details['ride_type']);
-            $response = array('status' => true, 'message' => 'Ride completed Successfully!');
+            $notification = [
+                'title' =>'Ride Information',
+                'body' => $message,
+                'sound' => 'mySound'
+            ];
+            $extraNotificationData = ["message" => $notification];
+            $not = push_notification_android($token,$notification,$extraNotificationData);
+            $message = [
+                'status' => true,
+                'message' => "Ride Rejected Successfully"
+            ];
+            $this->response($message, REST_Controller::HTTP_OK); 
         }
     }
 
