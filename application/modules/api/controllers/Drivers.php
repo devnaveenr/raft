@@ -600,6 +600,40 @@ class Drivers extends REST_Controller
             $response = array('status' => true, 'message' => 'Trip started sucessfully!');
         }
     }
+    public function complete_ride_post(){
+        header("Access-Control-Allow-Origin: *");
+        $_POST = $this->security->xss_clean($_POST);
+        $order_id= $this->post('order_id');
+        $driver_id= $this->post('driver_id');
+        $amount= $this->post('amount');
+        $vehicle_type= $this->post('vehicle_type');
+        $booking_id= $this->post('booking_id');
+        $payment_gateway_provider= $this->post('payment_gateway_provider');
+        $payment_status= $this->post('payment_status');
+        $payment_type= $this->post('payment_type');
+
+        $data = array(
+            'status' => 'completed',
+            'ride_end_time' => date('Y-m-d H:i:s'),
+            'modified_on' => date('Y-m-d H:i:s'),
+            'payment_gateway_provider'=>$payment_gateway_provider,
+            'transaction_id'=>$transaction_id,
+            'payment_status'=>$payment_status,
+            'ride_end_time'=>date('Y-m-d H:i:s'),
+            'payment_type'=>$payment_type
+
+        );
+        $where = 'id='.$order_id;
+        $update_user = $this->CrudModel->updateItem('orders',$where,$data);
+        if ($unique_id == false) {
+            $response = array('status' => false, 'message' => 'Some Problem found while Completing the Ride!');
+        } else {
+            $order_details = get_table_row('taxi_orders', array('id' => $booking_id));
+            $message = "Your Booking with Booking ID: " . $booking_id . " has been completed successfully!";
+            $this->ws_model->send_push_notification($message, 'user', $user_id, 'complete_ride', $amount, $rider_id, $order_details['vehicle_id'], $order_details['ride_id'], $order_details['mode'], $order_details['ride_type']);
+            $response = array('status' => true, 'message' => 'Ride completed Successfully!');
+        }
+    }
 
 }
 
