@@ -507,6 +507,7 @@ class Drivers extends REST_Controller
                 'body' => $message,
                 'sound' => 'mySound'
             ];
+            $extraNotificationData = ["message" => $notification];
             $not = push_notification_android($token,$notification,$extraNotificationData);
         }
 
