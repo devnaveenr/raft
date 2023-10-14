@@ -472,6 +472,17 @@ class Drivers extends REST_Controller
         $user_id= $this->post('user_id');
         $booking_id= $this->post('booking_id');
 
+        $params = array();
+		$params['select'] = "t1.*"; 
+		$params['table'] = 'users t1';
+		$where = "";
+		$where = "t1.user_id=".$user_id;
+		$params['where'] = $where;
+		$params['order_by'] = 't1.user_id';
+		$params['output'] = 'row_array';
+		$user_data = $this->CrudModel->getReports($params);
+        $token = $user_data['fcm_token'];
+
         $data = array(
             'driver_id' => $driver_id,
             'status' => 'accepted',
@@ -571,7 +582,17 @@ class Drivers extends REST_Controller
         );
         $where = 'id='.$order_id;
         $update_user = $this->CrudModel->updateItem('orders',$where,$data);
-
+        if ($update_user === FALSE) {
+            $response = array('status' => false, 'message' => 'Trip not started!');
+        } else {
+            $orders = $this->ws_model->get_ride_orders($ride_id);
+            if (!empty($orders)) {
+                foreach ($orders as $order) {
+                    $this->ws_model->send_push_notification('Trip started sucessfully!', 'user', $order['user_id'], 'ride_started', $order['order_id'], '', '', $order['vehicle_id'], $ride_id, $order['mode'], $order['ride_type']);
+                }
+            }
+            $response = array('status' => true, 'message' => 'Trip started sucessfully!');
+        }
     }
 
 }
