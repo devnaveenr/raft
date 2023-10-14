@@ -578,6 +578,17 @@ class Drivers extends REST_Controller
         $driver_id= $this->post('driver_id');
         $vehicle_type= $this->post('vehicle_type');
         $booking_id= $this->post('booking_id');
+        $params = array();
+		$params['select'] = "t1.*"; 
+		$params['table'] = 'users t1';
+		$where = "";
+		$where = "t1.user_id=".$user_id;
+		$params['where'] = $where;
+		$params['order_by'] = 't1.user_id';
+		$params['output'] = 'row_array';
+		$user_data = $this->CrudModel->getReports($params);
+        $token = $user_data['fcm_token'];
+
         $data = array(
             'driver_id' => $driver_id,
             'vehicle_type' => $vehicle_type,
@@ -594,7 +605,14 @@ class Drivers extends REST_Controller
             $orders = $this->ws_model->get_ride_orders($ride_id);
             if (!empty($orders)) {
                 foreach ($orders as $order) {
-                    $this->ws_model->send_push_notification('Trip started sucessfully!', 'user', $order['user_id'], 'ride_started', $order['order_id'], '', '', $order['vehicle_id'], $ride_id, $order['mode'], $order['ride_type']);
+                    $message = "Your ride with Booking ID: " . $booking_id . " has pick up by $name ";
+                    $notification = [
+                        'title' =>'Ride Information',
+                        'body' => $message,
+                        'sound' => 'mySound'
+                    ];
+                    $extraNotificationData = ["message" => $notification];
+                    $not = push_notification_android($token,$notification,$extraNotificationData);
                 }
             }
             $response = array('status' => true, 'message' => 'Trip started sucessfully!');
