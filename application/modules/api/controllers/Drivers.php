@@ -606,11 +606,11 @@ class Drivers extends REST_Controller
         $order_id= $this->post('order_id');
         $driver_id= $this->post('driver_id');
         $amount= $this->post('amount');
-        $vehicle_type= $this->post('vehicle_type');
         $booking_id= $this->post('booking_id');
         $payment_gateway_provider= $this->post('payment_gateway_provider');
         $payment_status= $this->post('payment_status');
         $payment_type= $this->post('payment_type');
+        $transaction_id = $this->post('transaction_id');
 
         $data = array(
             'status' => 'completed',
