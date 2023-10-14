@@ -455,7 +455,7 @@ class Drivers extends REST_Controller
                 'status' => false,
                 'message' => "Location Not Updated"
             ];
-            $this->response($message, REST_Controller::HTTP_OK);  
+        $this->response($message, REST_Controller::HTTP_OK);  
         }
         
     }
@@ -509,6 +509,11 @@ class Drivers extends REST_Controller
             ];
             $extraNotificationData = ["message" => $notification];
             $not = push_notification_android($token,$notification,$extraNotificationData);
+            $message = [
+                'status' => true,
+                'message' => "Ride Accpeted Successfully"
+            ];
+            $this->response($message, REST_Controller::HTTP_OK);
         }
 
     }
