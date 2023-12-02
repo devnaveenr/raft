@@ -657,7 +657,7 @@ class Drivers extends REST_Controller
             $not = push_notification_android($token,$notification,$extraNotificationData);
             $message = [
                 'status' => true,
-                'message' => "Ride Rejected Successfully"
+                'message' => "Ride Completed Successfully"
             ];
             $this->response($message, REST_Controller::HTTP_OK); 
         }
